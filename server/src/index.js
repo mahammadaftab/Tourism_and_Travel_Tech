@@ -22,33 +22,32 @@ const adminRoutes = require('./routes/admin');
 
 const app = express();
 
-// Middleware
-// CORS Configuration - Allow frontend origin
-const corsOptions = {
-  origin: function (origin, callback) {
-    const allowedOrigins = [
-      'http://localhost:5173',
-      'http://localhost:3000',
-      'https://tourism-and-travel-tech.vercel.app',
-      'https://tourism-and-travel-tech.onrender.com'
-    ];
-    
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  maxAge: 86400 // Cache preflight requests for 24 hours
-};
-
-app.use(cors(corsOptions));
-
-// Explicitly handle preflight requests
-app.options('*', cors(corsOptions));
+// Middleware - CORS MUST be first
+// Simple CORS - Allow all origins (safe for API)
+app.use((req, res, next) => {
+  // Allow requests from Vercel frontend
+  const allowedOrigins = [
+    'http://localhost:5173',
+    'http://localhost:3000',
+    'https://tourism-and-travel-tech.vercel.app'
+  ];
+  
+  const origin = req.headers.origin;
+  
+  if (allowedOrigins.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
+  
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+  
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(204);
+  }
+  
+  next();
+});
 
 app.use(express.json({ limit: '10mb' }));
 
