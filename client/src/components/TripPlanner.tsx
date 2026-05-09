@@ -16,39 +16,6 @@ declare global {
   }
 }
 
-const LANGUAGES = [
-  { code: 'en', name: 'English', native: 'English' },
-  { code: 'es', name: 'Spanish', native: 'Español' },
-  { code: 'fr', name: 'French', native: 'Français' },
-  { code: 'de', name: 'German', native: 'Deutsch' },
-  { code: 'it', name: 'Italian', native: 'Italiano' },
-  { code: 'pt', name: 'Portuguese', native: 'Português' },
-  { code: 'zh-CN', name: 'Chinese (Simplified)', native: '简体中文' },
-  { code: 'ja', name: 'Japanese', native: '日本語' },
-  { code: 'ko', name: 'Korean', native: '한국어' },
-  { code: 'ar', name: 'Arabic', native: 'العربية' },
-  { code: 'hi', name: 'Hindi', native: 'हिन्दी' },
-  { code: 'kn', name: 'Kannada', native: 'ಕನ್ನಡ' },
-  { code: 'te', name: 'Telugu', native: 'తెలుగు' },
-  { code: 'ta', name: 'Tamil', native: 'தமிழ்' },
-  { code: 'bn', name: 'Bengali', native: 'বাংলা' },
-  { code: 'mr', name: 'Marathi', native: 'मराठी' },
-  { code: 'gu', name: 'Gujarati', native: 'ગુજરાતી' },
-  { code: 'ml', name: 'Malayalam', native: 'മലയാളം' },
-  { code: 'pa', name: 'Punjabi', native: 'ਪੰਜਾਬੀ' },
-  { code: 'ru', name: 'Russian', native: 'Русский' },
-  { code: 'tr', name: 'Turkish', native: 'Türkçe' },
-  { code: 'nl', name: 'Dutch', native: 'Nederlands' },
-  { code: 'pl', name: 'Polish', native: 'Polski' },
-  { code: 'sv', name: 'Swedish', native: 'Svenska' },
-  { code: 'no', name: 'Norwegian', native: 'Norsk' },
-  { code: 'da', name: 'Danish', native: 'Dansk' },
-  { code: 'fi', name: 'Finnish', native: 'Suomi' },
-  { code: 'th', name: 'Thai', native: 'ไทย' },
-  { code: 'vi', name: 'Vietnamese', native: 'Tiếng Việt' },
-  { code: 'id', name: 'Indonesian', native: 'Bahasa Indonesia' },
-];
-
 const INTERESTS = [
   { id: 'culture', label: 'Culture', icon: '🎭' },
   { id: 'food', label: 'Food', icon: '🍽️' },
@@ -299,7 +266,7 @@ const getCurrencyForDestination = (destination: string) => {
   for (const [city, currencyCode] of Object.entries(cityMappings)) {
     if (destLower.includes(city)) {
       // Find the full currency data
-      for (const [country, data] of Object.entries(CURRENCY_DATA)) {
+      for (const [, data] of Object.entries(CURRENCY_DATA)) {
         if (data.code === currencyCode) {
           return data;
         }
@@ -422,7 +389,6 @@ const TripPlanner: React.FC = () => {
     if (!currency || currency.code === 'USD' || !exchangeRates[currency.code]) {
       return null;
     }
-    const rate = exchangeRates[currency.code];
     return null; // Removed exchange rate display
   };
   useEffect(() => {

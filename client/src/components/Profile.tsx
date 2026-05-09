@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
 import NotificationSettings from './NotificationSettings';
 import { 
-  User, Mail, Phone, MapPin, Calendar, 
+  User, Mail, Phone, MapPin, 
   Camera, Save, Edit2, X, CheckCircle, LogOut 
 } from 'lucide-react';
 

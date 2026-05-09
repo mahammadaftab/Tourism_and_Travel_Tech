@@ -42,7 +42,7 @@ const MapView: React.FC = () => {
 
   useEffect(() => {
     const fetchWeather = async () => {
-      if (preferences.lat !== 0 && preferences.lng !== 0) {
+      if (preferences.lat !== undefined && preferences.lng !== undefined && preferences.lat !== 0 && preferences.lng !== 0) {
         try {
           const response = await dataAPI.getWeather(preferences.lat, preferences.lng);
           setWeather(response.data.current);
@@ -56,7 +56,7 @@ const MapView: React.FC = () => {
 
   const center = currentItinerary 
     ? [currentItinerary.destination.lat, currentItinerary.destination.lng]
-    : preferences.lat !== 0 
+    : preferences.lat !== undefined && preferences.lat !== 0 
       ? [preferences.lat, preferences.lng]
       : [51.505, -0.09]; // Default to London
 

@@ -37,7 +37,7 @@ const Dashboard: React.FC = () => {
     { id: 'map', label: 'Map View', icon: MapIcon, color: 'from-emerald-500 to-teal-500' },
     { id: 'assistant', label: 'Assistant', icon: MessageCircle, color: 'from-amber-500 to-orange-500' },
     { id: 'hotels', label: 'Hotels', icon: Bed, color: 'from-indigo-500 to-purple-500' },
-    { id: 'guide', label: 'Employee Guide', icon: Headphones, color: 'from-green-500 to-teal-500' },
+    { id: 'guide', label: 'Tourist Guide', icon: Headphones, color: 'from-green-500 to-teal-500' },
     { id: 'profile', label: 'Profile', icon: User, color: 'from-rose-500 to-red-500' },
     ...(isAdmin ? [{ id: 'admin', label: 'Admin', icon: Shield, color: 'from-gray-600 to-gray-800' }] : [])
   ];

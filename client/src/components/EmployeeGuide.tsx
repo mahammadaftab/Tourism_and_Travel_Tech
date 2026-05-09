@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Phone, MessageCircle, Mail, Clock, MapPin, Star, ChevronRight, Headphones, Calendar, Users, Award, Shield, Volume2, Mic, Video, Zap, Heart, Globe, TrendingUp, CheckCircle, AlertCircle, CreditCard } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Phone, Mail, Clock, MapPin, Star, ChevronRight, Headphones, Calendar, Users, Award, Shield, Mic, Zap, Globe, TrendingUp, AlertCircle, CreditCard } from 'lucide-react';
 import { employeeAPI } from '../services/api';
 
 interface Employee {
@@ -29,7 +29,6 @@ const EmployeeGuide: React.FC = () => {
   const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(null);
   const [activeTab, setActiveTab] = useState<'directory' | 'quick-help' | 'emergency'>('directory');
   const [voiceActive, setVoiceActive] = useState<boolean>(false);
-  const recognitionRef = useRef<any>(null);
 
   // Mock data - in real app, this would come from API
   const mockEmployees: Employee[] = [

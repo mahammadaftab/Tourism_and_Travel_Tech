@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTrip } from '../context/TripContext';
-import JourneyPath from './JourneyPath';
 import { 
-  Calendar, Clock, MapPin, Leaf, Users, 
+  Clock, MapPin, Leaf, Users, 
   Sparkles, Star, ChevronDown, ChevronUp,
   Phone, Navigation, X, Map as MapIcon, ExternalLink
 } from 'lucide-react';
@@ -104,11 +103,6 @@ const ActivityDetails: React.FC<ActivityDetailsProps> = ({ activity, onClose }) 
     if (!userLocation || !activityCoords) return '#';
     
     const destinationName = encodeURIComponent(activity.name);
-    const destinationAddress = encodeURIComponent(
-      typeof activity.location === 'string' 
-        ? activity.location 
-        : activity.location?.address || activity.address || ''
-    );
     
     // Use exact coordinates for precise directions
     return `https://www.google.com/maps/dir/?api=1&origin=${userLocation.lat},${userLocation.lng}&destination=${activityCoords.lat},${activityCoords.lng}&destination_place_id=${destinationName}&travelmode=driving&dir_action=navigate`;
@@ -137,23 +131,9 @@ const ActivityDetails: React.FC<ActivityDetailsProps> = ({ activity, onClose }) 
     }
   };
 
-  // Generate a realistic phone number if not provided
-  const getLocationString = (): string => {
-    if (typeof activity.location === 'string') {
-      return activity.location;
-    }
-    if (activity.location?.address) {
-      return activity.location.address;
-    }
-    if (activity.address) {
-      return activity.address;
-    }
-    return '';
-  };
-  
-  const phoneNumber = activity.phoneNumber || activity.formattedPhone || generatePhoneNumber(getLocationString());
+  const phoneNumber = activity.phoneNumber || activity.formattedPhone || generatePhoneNumber();
 
-  function generatePhoneNumber(location: string): string {
+  function generatePhoneNumber(): string {
     // Always return Indian format phone number
     return '+91 98765 43210';
   }

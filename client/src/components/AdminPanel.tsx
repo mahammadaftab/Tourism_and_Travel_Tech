@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { 
-  Users, Plus, Edit, Trash2, Eye, Shield, BarChart3, Settings, 
-  Search, Filter, LogOut, Menu, X, CheckCircle, AlertCircle,
-  UserPlus, UserCog, Building, Phone, Mail, Star, Clock
+  Users, Edit, Trash2, Shield, BarChart3, Settings, 
+  Search, LogOut, X, CheckCircle,
+  UserPlus, Phone, Mail, Star
 } from 'lucide-react';
 import { adminAPI } from '../services/api';
 import { useAuth } from '../context/AuthContext';

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
-import { Plane, Loader2 } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 
 interface RegisterProps {
   onToggle: () => void;

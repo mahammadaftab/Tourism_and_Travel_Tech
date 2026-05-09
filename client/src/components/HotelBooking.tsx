@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, Star, Calendar, DollarSign, Heart, Filter, Bed, Wifi, Car, Coffee, Utensils, Waves, TreePine, Mountain, Dumbbell, ConciergeBell, Sun, MapPinned } from 'lucide-react';
+import { MapPin, Star, Heart, Bed, Wifi, Car, Coffee, Utensils, Waves, TreePine, Mountain, ConciergeBell, Sun } from 'lucide-react';
 import { hotelAPI } from '../services/api';
 
 interface Hotel {

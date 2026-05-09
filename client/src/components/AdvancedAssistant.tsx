@@ -11,16 +11,9 @@ import {
   MicOff, 
   Volume2, 
   MapPin, 
-  Calendar, 
-  DollarSign, 
   Leaf, 
   Users, 
-  Clock,
-  Globe,
-  Star,
-  Heart,
   Zap,
-  Navigation,
   MessageCircle
 } from 'lucide-react';
 

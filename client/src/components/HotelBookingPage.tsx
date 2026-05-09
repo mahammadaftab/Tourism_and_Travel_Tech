@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useTrip } from '../context/TripContext';
 import { hotelAPI } from '../services/api';
-import HotelBooking from './HotelBooking';
-import { Calendar, Users, MapPin, Star, Filter, Bed, Heart, Wifi, Car, Coffee, Utensils } from 'lucide-react';
+import { Calendar, Users, MapPin, Star, Filter, Bed, Heart } from 'lucide-react';
 
 interface Hotel {
   id: string;
