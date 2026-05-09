@@ -35,7 +35,7 @@ Always be helpful, friendly, and provide accurate information. If you don't know
             apiKey: process.env.OPENAI_API_KEY,
             baseURL: 'https://openrouter.ai/api/v1',
             defaultHeaders: {
-              'HTTP-Referer': process.env.YOUR_SITE_URL || 'http://localhost:5173',
+              'HTTP-Referer': process.env.YOUR_SITE_URL || 'https://tourism-and-travel-tech.vercel.app',
               'X-Title': process.env.YOUR_SITE_NAME || 'Smart Travel Assistant',
             },
           });
