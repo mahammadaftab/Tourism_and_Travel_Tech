@@ -78,7 +78,17 @@ app.use('/api/admin', adminRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'OK', message: 'Smart Travel Assistant API is running' });
+  res.json({ status: 'OK', message: 'Smart Travel Assistant API is running', timestamp: new Date().toISOString() });
+});
+
+// CORS test endpoint
+app.get('/api/test-cors', (req, res) => {
+  res.json({ 
+    message: 'CORS test successful', 
+    origin: req.headers.origin,
+    corsEnabled: true,
+    timestamp: new Date().toISOString()
+  });
 });
 
 // Error handling middleware
