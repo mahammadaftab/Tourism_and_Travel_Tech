@@ -137,7 +137,10 @@ const employees = [
 
 const seedEmployees = async () => {
   try {
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/smart-travel-assistant');
+    const dbUri = process.env.MONGODB_URL || process.env.MONGODB_URI || 'mongodb://localhost:27017/smart-travel-assistant';
+    const maskedUri = dbUri.replace(/\/\/([^:]+):([^@]+)@/, '//xxxx:xxxx@');
+    console.log(`Connecting to MongoDB at: ${maskedUri}`);
+    await mongoose.connect(dbUri);
     console.log('Connected to MongoDB');
 
     // Clear existing employees

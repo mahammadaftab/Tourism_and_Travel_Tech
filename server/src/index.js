@@ -49,7 +49,10 @@ app.use(express.json({ limit: '10mb' }));
 // Connect to MongoDB
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/smart-travel-assistant');
+    const dbUri = process.env.MONGODB_URL || process.env.MONGODB_URI || 'mongodb://localhost:27017/smart-travel-assistant';
+    const maskedUri = dbUri.replace(/\/\/([^:]+):([^@]+)@/, '//xxxx:xxxx@');
+    console.log(`Connecting to MongoDB at: ${maskedUri}`);
+    const conn = await mongoose.connect(dbUri);
     console.log(`MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {
     console.error(`Error: ${error.message}`);
